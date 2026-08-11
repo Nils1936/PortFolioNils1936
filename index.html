@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Perfil y proyectos de Nils1936.">
+  <title>Nils1936 — Proyectos y estadísticas</title>
+  <style>
+    :root { --ink:#f5f5f5; --muted:#a6a6a6; --line:rgba(255,255,255,.18); --panel:rgba(20,20,20,.86); --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; min-width:320px; color:var(--ink); background:#050505; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; background:radial-gradient(circle at 12% 0%, rgba(255,255,255,.13), transparent 31rem),radial-gradient(circle at 90% 34%, rgba(255,255,255,.06), transparent 26rem),linear-gradient(130deg,#050505 0%,#161616 55%,#070707 100%); }
+    a { color:inherit; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.06em; text-decoration:none; }
+    .brand b { color:var(--white); }
+    .brand-mark { width:31px; height:31px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.65); border-radius:10px; color:var(--white); background:linear-gradient(135deg,rgba(255,255,255,.23),rgba(255,255,255,.05)); font-size:.82rem; font-weight:900; letter-spacing:-.08em; }
+    img.brand-mark { display:block; object-fit:cover; background:#000; }
+    svg.brand-mark { display:block; padding:4px; background:#090909; } svg.brand-mark path { fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+    .nav-links { display:flex; gap:20px; color:var(--muted); font-size:.92rem; }
+    .nav-links a { text-decoration:none; }
+    .nav-links a:hover { color:var(--ink); }
+    .hero { padding:70px 0 54px; display:grid; grid-template-columns:1.35fr .65fr; gap:48px; align-items:end; }
+    .eyebrow { color:var(--aqua); font-size:.78rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; }
+    h1 { margin:10px 0 18px; font-size:clamp(3.1rem,8vw,6.7rem); line-height:.92; letter-spacing:-.065em; }
+    h1 span { color:var(--white); }
+    .lead { max-width:600px; color:var(--muted); font-size:1.1rem; line-height:1.7; }
+    .hero-card, .project, .stat { background:var(--panel); border:1px solid var(--line); border-radius:20px; box-shadow:0 18px 70px rgba(0,0,0,.35); }
+    .hero-card { padding:20px; }
+    .hero-logo { width:100%; aspect-ratio:1.22; overflow:hidden; }
+    .hero-logo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; mix-blend-mode:screen; }
+    .portfolio-instagram { display:block; color:inherit; text-decoration:none; }
+    .portfolio-instagram:hover .handle { text-decoration:underline; text-underline-offset:5px; }
+    .online { display:flex; align-items:center; gap:9px; color:var(--muted); font-size:.9rem; }
+    .dot { width:10px; height:10px; border-radius:50%; background:var(--white); box-shadow:0 0 18px rgba(255,255,255,.8); }
+    .handle { margin:18px 0 6px; font-size:2rem; font-weight:800; }
+    .hero-card p { margin:0; color:var(--muted); }
+    section { padding:42px 0; }
+    .section-head { display:flex; justify-content:space-between; gap:20px; align-items:baseline; margin-bottom:22px; }
+    h2 { margin:0; font-size:1.7rem; letter-spacing:-.035em; }
+    .section-head p { margin:0; color:var(--muted); font-size:.9rem; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .stat { min-height:140px; padding:20px; display:flex; flex-direction:column; justify-content:space-between; }
+    .stat small { color:var(--muted); }
+    .stat strong { font-size:2.2rem; letter-spacing:-.06em; }
+    .stat strong { color:var(--white); }
+    .data-note { margin:15px 0 0; color:var(--muted); font-size:.82rem; }
+    .projects { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .project { position:relative; overflow:hidden; min-height:325px; padding:25px; display:flex; flex-direction:column; }
+    .project::before { content:""; position:absolute; inset:0; opacity:.9; pointer-events:none; }
+    .project.saved::before,.project.imag::before,.project.org::before,.project.src::before { background:linear-gradient(145deg,rgba(255,255,255,.13),transparent 48%); }
+    .project > * { position:relative; }
+    .tag { width:max-content; border:1px solid var(--line); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:.75rem; }
+    .project-logo { height:128px; margin:0 0 10px; display:flex; align-items:center; justify-content:center; }
+    .project-logo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; filter:grayscale(1); }
+    .project-logo .blend-logo { mix-blend-mode:screen; }.project-logo .org-logo { filter:grayscale(1) invert(1) contrast(1.35); mix-blend-mode:screen; }
+    .project-logo + h3 { margin-top:12px; }
+    .project h3 { margin:28px 0 10px; font-size:1.75rem; letter-spacing:-.045em; white-space:nowrap; }.project p { color:var(--muted); line-height:1.65; margin:0; }
+    .project-footer { margin-top:auto; padding-top:24px; border-top:1px solid var(--line); font-size:.86rem; color:var(--ink); }
+    .collab { color:var(--white); font-weight:700; }
+    .project-link { display:inline-flex; width:max-content; margin-top:17px; color:var(--white); font-size:.86rem; font-weight:700; text-decoration-color:var(--line); text-decoration-thickness:1px; text-underline-offset:4px; }
+    .project-links { display:grid; gap:8px; margin-top:17px; }.project-links .project-link { margin-top:0; }
+    .youtube-mark { display:inline-grid; place-items:center; width:15px; height:11px; margin-right:5px; border-radius:3px; background:currentColor; color:var(--panel); font-size:8px; line-height:1; text-decoration:none; }
+    .skills { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .skill { min-height:170px; padding:24px; border-top:2px solid var(--white); background:linear-gradient(125deg,rgba(255,255,255,.07),transparent); }
+    .skill h3 { margin:16px 0 8px; font-size:1.2rem; }.skill p { margin:0; color:var(--muted); line-height:1.55; }.skill .tag { border:0; padding:0; }
+    .about { padding:28px; border-left:2px solid var(--white); background:linear-gradient(125deg,rgba(255,255,255,.07),transparent); }
+    .about p { max-width:720px; margin:0; color:var(--muted); font-size:1.08rem; line-height:1.7; }.about strong { color:var(--white); font-weight:700; }
+    .social-group + .social-group { margin-top:24px; }
+    .social-group h3 { margin:0 0 12px; color:var(--muted); font-size:.85rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+    .socials { display:flex; flex-wrap:wrap; gap:12px; }
+    .social { flex:1 1 185px; min-height:124px; padding:18px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; border:1px solid var(--line); color:var(--white); text-align:center; text-decoration:none; background:rgba(255,255,255,.035); }
+    .social:hover { background:rgba(255,255,255,.1); }.social strong { font-size:1rem; }.social span { color:var(--muted); font-size:.84rem; }.social-icon { width:29px; height:29px; display:grid; place-items:center; color:var(--white); }.social-icon svg { width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }.social-icon .fill { fill:currentColor; stroke:none; }
+    footer { margin-top:42px; padding:30px 0 45px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; display:flex; justify-content:space-between; gap:20px; }
+    @media(max-width:760px){ .wrap{width:min(100% - 28px,1120px)} .nav-links{display:none}.hero{grid-template-columns:1fr;padding:45px 0 28px;gap:24px}.stats{grid-template-columns:repeat(2,1fr)}.projects,.skills{grid-template-columns:1fr}.project{min-height:270px}.project h3{font-size:clamp(1.15rem,6vw,1.75rem)}footer{flex-direction:column} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav aria-label="Navegación principal"><a class="brand" href="#inicio" aria-label="Nils1936, inicio"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25 13 7l7 18 7-16"></path><path d="m8 25 6-15 6 15"></path></svg><span>NILS<b>1936</b></span></a><div class="nav-links"><a href="#estadisticas">Estadísticas</a><a href="#proyectos">Proyectos</a><a href="#perfil">Perfil</a><a href="#sobre-mi">Sobre mí</a><a href="#redes">Redes</a></div></nav>
+    <main>
+      <section class="hero" id="inicio">
+        <div><div class="eyebrow">Portfolio de Nils1936</div><h1>Construyendo<br><span>mundos</span> juntos.</h1><p class="lead">El espacio de Nils1936 para reunir sus proyectos, colaboraciones y habilidades como editor, compositor y programador.</p></div>
+        <aside class="hero-card"><a class="portfolio-instagram" href="https://www.instagram.com/n_i_l_s1936/" target="_blank" rel="noopener noreferrer" aria-label="Visitar el Instagram de Nils1936"><div class="hero-logo"><img src="assets/nils-logo.jpeg" alt="Logotipo de Nils con una silueta en blanco, negro y gris."></div><div class="handle">@Nils1936</div></a><div class="online"><i class="dot"></i> Portfolio de Nils1936</div></aside>
+      </section>
+      <section id="estadisticas"><div class="section-head"><h2>Estadísticas del perfil</h2><p>Formación y datos de Nils1936.</p></div><div class="stats"><article class="stat"><small>Título de inglés</small><strong>Medio</strong></article><article class="stat"><small>Editor</small><strong>Avanzado</strong></article><article class="stat"><small>Compositor</small><strong>Por diversión</strong></article></div></section>
+      <section id="proyectos"><div class="section-head"><h2>Proyectos principales</h2><p>De comunidad a producción.</p></div><div class="projects">
+        <article class="project saved"><span class="tag">Clan</span><div class="project-logo"><img class="blend-logo" src="assets/saved-clan-logo.jpeg" alt="Logotipo de Saved Clan."></div><h3>Saved Clan</h3><p>El clan de Nils1936: un punto de encuentro para jugar, crear equipo y construir una identidad compartida.</p><div class="project-links"><a class="project-link" href="https://sites.google.com/view/savedclan/saved-clan" target="_blank" rel="noopener noreferrer">Visitar página oficial ↗</a><a class="project-link" href="https://discord.gg/f4v2FSy2E" target="_blank" rel="noopener noreferrer">Unirse al servidor de Discord ↗</a><a class="project-link" href="https://www.instagram.com/team__saved/" target="_blank" rel="noopener noreferrer">Instagram de Saved Clan ↗</a><a class="project-link" href="https://www.instagram.com/savedcertified/" target="_blank" rel="noopener noreferrer">Instagram Saved Certified ↗</a></div><div class="project-footer">Líder de Saved Clan</div></article>
+        <article class="project imag"><span class="tag">Empresa cinematográfica</span><div class="project-logo"><img class="blend-logo" src="assets/imagination-productions-logo.jpeg" alt="Logotipo de Imagination Productions."></div><h3>Imagination Productions</h3><p>Un proyecto creativo desarrollado en colaboración con <span class="collab">Madera</span>, pensado para convertir ideas en experiencias con personalidad a través de contenido de machinimas y propuestas cinematográficas. También colaboramos con <span class="collab">Rupez Productions</span>.</p><div class="project-links"><a class="project-link" href="https://sites.google.com/view/imagination-productions/ip" target="_blank" rel="noopener noreferrer">Visitar página oficial ↗</a><a class="project-link" href="https://www.youtube.com/@ImaginationProductionsESP" target="_blank" rel="noopener noreferrer">YouTube de Imagination Productions ↗</a><a class="project-link" href="https://www.instagram.com/lmaginationproductions/" target="_blank" rel="noopener noreferrer">Instagram de Imagination Productions ↗</a><a class="project-link" href="https://www.instagram.com/rupezproductionsofficial/" target="_blank" rel="noopener noreferrer">Instagram de Rupez Productions ↗</a><a class="project-link" href="https://www.youtube.com/@RupezProductions" target="_blank" rel="noopener noreferrer"><span class="youtube-mark" aria-hidden="true">▶</span>YouTube de Rupez Productions ↗</a><a class="project-link" href="https://www.youtube.com/@Elsaurios10trex" target="_blank" rel="noopener noreferrer"><span class="youtube-mark" aria-hidden="true">▶</span>ElSaurios10 · líder de Rupez Productions ↗</a></div><div class="project-footer">Líder de Imagination Productions junto con Madera (WoodCannon56277)</div></article>
+        <article class="project org"><span class="tag">Proyecto reciente</span><div class="project-logo"><img class="org-logo" src="assets/org-studios-logo.jpeg" alt="Logotipo de ORG Studios."></div><h3>ORG Studios</h3><p>La nueva etapa: un estudio relacionado con el desarrollo de videojuegos, creado para dar forma a proyectos ambiciosos, reunir talento y llevar las ideas más lejos.</p><div class="project-links"><a class="project-link" href="https://www.instagram.com/org_studios/" target="_blank" rel="noopener noreferrer">Instagram de ORG Studios ↗</a></div><div class="project-footer">Líder de ORG Studios</div></article>
+        <article class="project src"><span class="tag">Empresa de videojuegos</span><div class="project-logo"><img src="assets/src-logo.jpeg" alt="Logotipo de SRC, Stalker Reborn Competitive."></div><h3>Stalker Reborn Competitive</h3><p>También conocido como <strong>SRC</strong>: servidor competitivo de Discord para <strong>The Stalker Reborn</strong>. Soy copropietario de este servidor.</p><div class="project-links"><a class="project-link" href="https://discord.gg/dGK2rsFU2" target="_blank" rel="noopener noreferrer">Unirse al servidor de Discord ↗</a><a class="project-link" href="https://www.roblox.com/es/games/22865026/The-Stalker-Renacido?gameSetTypeId=100000003&amp;homePageSessionInfo=8c092254-c059-4d2a-84c4-cb3a7e186ea3&amp;isAd=false&amp;newGameEnum_analyticsData=0&amp;numberOfLoadedTiles=194&amp;page=homePage&amp;placeId=22865026&amp;playContext=homePage&amp;position=0&amp;positionInRow=0&amp;rowOnPage=3&amp;sortPos=2&amp;sortSubId=&amp;universeId=11657380" target="_blank" rel="noopener noreferrer">Ver The Stalker Reborn ↗</a><a class="project-link" href="https://www.roblox.com/es/games/96536345814610/The-Stalker-2-Prueba-de-juego-pre-alfa-temprana?gameSetTypeId=100000003&amp;homePageSessionInfo=5bba2740-202c-4e08-9891-78f1d3fc1d1c&amp;isAd=false&amp;newGameEnum_analyticsData=0&amp;numberOfLoadedTiles=194&amp;page=homePage&amp;placeId=96536345814610&amp;playContext=homePage&amp;position=3&amp;positionInRow=3&amp;rowOnPage=3&amp;sortPos=2&amp;sortSubId=&amp;universeId=7523937783" target="_blank" rel="noopener noreferrer">The Stalker 2 (Pre-Alpha) ↗</a></div><div class="project-footer">Copropietario de SRC</div></article>
+      </div></section>
+      <section id="perfil"><div class="section-head"><h2>Perfil profesional</h2><p>Las cualidades detrás de cada proyecto.</p></div><div class="skills"><article class="skill"><span class="tag">Edición</span><h3>Editor</h3><p>Creación y edición de contenido para dar ritmo, identidad y claridad a cada proyecto.</p></article><article class="skill"><span class="tag">Música</span><h3>Compositor</h3><p>Composición de música y atmósferas que aportan emoción a las experiencias creativas.</p></article><article class="skill"><span class="tag">Tecnología</span><h3>Programador</h3><p>Desarrollo de ideas digitales y herramientas para convertir conceptos en proyectos reales.</p></article><article class="skill"><span class="tag">Comunidad</span><h3>Moderador y gestor de Discord</h3><p>Moderación y gestión de servidores de Discord para construir comunidades organizadas, activas y seguras.</p></article></div></section>
+      <section id="sobre-mi"><div class="section-head"><h2>Sobre mí</h2><p>Una parte importante de mi identidad.</p></div><div class="about"><p>Tengo <strong>autismo y TDAH</strong>. Forman parte de mi manera de entender el mundo, crear y participar en mis proyectos.</p></div></section>
+      <section id="redes"><div class="section-head"><h2>Redes sociales</h2><p>Enlaces oficiales de Nils1936.</p></div><div class="social-group"><h3>Redes principales</h3><div class="socials"><a class="social" href="https://www.youtube.com/@NilsCuty" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="6"></rect><path class="fill" d="m13 12 8 4-8 4z"></path></svg></span><strong>YouTube</strong><span>@NilsCuty ↗</span></a><a class="social" href="https://www.instagram.com/n_i_l_s1936/" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="7"></rect><circle cx="16" cy="16" r="5"></circle><circle class="fill" cx="23" cy="9" r="1.5"></circle></svg></span><strong>Instagram</strong><span>@n_i_l_s1936 ↗</span></a></div><div class="social-group"><h3>Más redes sociales</h3><div class="socials"><a class="social" href="https://linktr.ee/Nils1936" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4v24M8 8l8 8 8-8M6 18l10 10 10-10"></path><circle class="fill" cx="16" cy="4" r="2"></circle></svg></span><strong>Linktree</strong><span>Mis demás redes sociales ↗</span></a></div></div></div><div class="social-group"><h3>Mi música</h3><div class="socials"><a class="social" href="https://on.soundcloud.com/5hwZWP8rHzYlju4VcY" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 23h22a4 4 0 0 0 0-8 7 7 0 0 0-13-2A5 5 0 0 0 4 17z"></path><path d="M6 23v-4m4 4v-7m4 7v-9m4 9v-7m4 7v-4"></path></svg></span><strong>SoundCloud</strong><span>Escucha mi música ↗</span></a><a class="social" href="https://www.bandlab.com/nils1936" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 23 11 9l4 11 4-8 8 11"></path><path d="M5 26h22"></path></svg></span><strong>BandLab</strong><span>@nils1936 ↗</span></a></div></div><div class="social-group"><h3>Servidores de Discord</h3><div class="socials"><a class="social" href="https://discord.gg/f4v2FSy2E" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 9c5-3 15-3 20 0l2 15-7 4-5-3-5 3-7-4z"></path><circle class="fill" cx="12" cy="17" r="2"></circle><circle class="fill" cx="20" cy="17" r="2"></circle></svg></span><strong>Saved Clan</strong><span>Servidor de Discord ↗</span></a><a class="social" href="https://discord.gg/dGK2rsFU2" target="_blank" rel="noopener noreferrer"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 9c5-3 15-3 20 0l2 15-7 4-5-3-5 3-7-4z"></path><circle class="fill" cx="12" cy="17" r="2"></circle><circle class="fill" cx="20" cy="17" r="2"></circle></svg></span><strong>SRC</strong><span>Servidor competitivo de The Stalker Reborn ↗</span></a></div></div></section>
+    </main>
+    <footer><span>Nils1936 · Proyectos y perfil profesional</span><span>Saved Clan · Imagination Productions · ORG Studios · SRC</span></footer>
+  </div>
+  <script>
+    const musicGroup = [...document.querySelectorAll('.social-group')].find((group) => group.querySelector('h3')?.textContent.trim() === 'Mi música');
+    const musicLinks = musicGroup?.querySelector('.socials');
+    if (musicLinks) {
+      const musicChannel = document.createElement('a');
+      musicChannel.className = 'social';
+      musicChannel.href = 'https://www.youtube.com/@NilsMusic26';
+      musicChannel.target = '_blank';
+      musicChannel.rel = 'noopener noreferrer';
+      musicChannel.innerHTML = '<span class="social-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="6"></rect><path class="fill" d="m13 12 8 4-8 4z"></path></svg></span><strong>YouTube Music</strong><span>@NilsMusic26 ↗</span>';
+      musicLinks.append(musicChannel);
+    }
+  </script>
+</body>
+</html>
